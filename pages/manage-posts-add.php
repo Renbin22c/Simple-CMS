@@ -1,7 +1,7 @@
 <?php
 
 // step 1: set CSRF token
-CSRF::generateToken( 'add_psot_form' );
+CSRF::generateToken( 'add_post_form' );
 
 // step 2: make sure post request
 if ( $_SERVER["REQUEST_METHOD"] === 'POST' ) {
