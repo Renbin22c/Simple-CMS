@@ -1,15 +1,21 @@
 <?php
 
-  // get route from the global variable $_SERVER
-  $path = $_SERVER["REQUEST_URI"];
+  // start session
+  session_start();
 
-  // remove beginning slash & ending slash
-  $path = trim( $path, '/' );
+  // require all tha classes & functions files
+  require 'includes/class-db.php';
+  require 'includes/class-user.php';
+  require 'includes/class-authentication.php';
+  require 'includes/class-form-validation.php';
+  require 'includes/class-csrf.php';
+  require 'includes/class-post.php';
 
-  // remove all the URL parameters that starts from ?
+  // get route
+  $path = trim( $_SERVER["REQUEST_URI"], '/' );
+
+  // remove query string
   $path = parse_url( $path, PHP_URL_PATH );
-
-  // var_dump( $path );
 
   switch( $path ) {
     case 'login':
@@ -49,3 +55,5 @@
       require "pages/home.php";
       break;
   }
+
+?>

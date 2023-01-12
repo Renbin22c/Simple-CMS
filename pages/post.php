@@ -1,6 +1,6 @@
 <?php
 
-require "parts/header.php";
+require dirname(__DIR__) . "/parts/header.php";
 
 ?>
   <body>
@@ -41,4 +41,4 @@ require "parts/header.php";
       </div>
     </div>
 
-<?php require "parts/footer.php"; ?>
+    <?php require dirname(__DIR__) . "/parts/footer.php"; ?>

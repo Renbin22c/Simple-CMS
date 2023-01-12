@@ -1,6 +1,12 @@
 <?php
 
-require "parts/header.php";
+// the user has a role or not
+if (!Authentication::whoCanAccess('user')){
+  header('Location: /login');
+  exit;
+}
+
+require dirname(__DIR__) . "/parts/header.php";
 
 ?>
   <body>
@@ -24,6 +30,8 @@ require "parts/header.php";
             </div>
           </div>
         </div>
+        <!--manage user start-->
+        <?php if (Authentication::whoCanAccess('admin')): ?>
         <div class="col">
           <div class="card mb-2">
             <div class="card-body">
@@ -37,16 +45,18 @@ require "parts/header.php";
                 <a href="/manage-users" class="btn btn-primary btn-sm"
                   >Access</a
                 >
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+              </div><!-- .text_center-->
+            </div><!-- .card-body-->
+          </div><!-- .card-->
+        </div><!-- .col-->
+        <?php endif; ?>
+        <!-- manage user end-->
+      </div><!-- .row-->
       <div class="mt-4 text-center">
         <a href="/home" class="btn btn-link btn-sm"
           ><i class="bi bi-arrow-left"></i> Back</a
         >
       </div>
-    </div>
+    </div><!-- .container-->
 
-<?php require "parts/footer.php"; ?>
+    <?php require dirname(__DIR__) . "/parts/footer.php"; ?>
